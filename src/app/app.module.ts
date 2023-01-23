@@ -9,12 +9,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
+import { FormComponent } from './components/form/form.component';
+import { ListComponent } from './components/list/list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormComponent,
+    ListComponent,
+    NavbarComponent,
+    FooterComponent
 
   ],
   imports: [
