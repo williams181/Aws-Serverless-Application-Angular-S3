@@ -11,18 +11,18 @@ export class FormComponent {
 
   data: any = [];
 
-  // nomeHospital: string;
-  // cnpj: string;
-  // nomePaciente: string;
-  // nomeProcedimento: number;
-  // acomodacao: string;
-  // nomeConvenio: string;
-  // dataEvento: string;
+  nomeHospital: any;
+  cnpj: any;
+  nomePaciente: any;
+  nomeProcedimento: any;
+  acomodacao: any;
+  nomeConvenio: any;
+  dataEvento: any;
   medico: any;
-  // crm: number;
-  // registroAnestesico: File;
-  // mensagem: string;
-  // errorMensagem: String;
+  crm: any;
+  registroAnestesico: any;
+  mensagem: any;
+  errorMensagem: any;
 
   constructor(private http: HttpClient) { }
 
@@ -31,10 +31,23 @@ export class FormComponent {
     // const headers = { '': '' };
     // const body = { title: '' };
     // const headers = ({"Access-Control-Allow-Origin": "*",});
-    this.http.get<any>('/api/buscar/1').subscribe((data) => {
+    this.http.get<any>('/api/buscar/1').subscribe((data: any) => {
       this.medico = data;
     });
   }
+
+  onClickRegister() {          
+    this.http.post<Article>('/api/criar', { title: 'Angular POST Request Example' }).subscribe(data => {
+        this.medico = data.medico;
+        this.nomePaciente = data.nomePaciente;
+        this.cnpj = data.cnpj;
+        this.nomeProcedimento = data.nomeProcedimento;
+        this.crm = data.crm;
+        this.acomodacao = data.acomodacao;
+        this.nomeConvenio = data.nomeConvenio;
+        this.nomeHospital = data.nomeHospital;
+    })
+}
 
 
 }
