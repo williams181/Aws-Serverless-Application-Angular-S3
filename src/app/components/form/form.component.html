@@ -21,7 +21,7 @@
             <div class="col">
                 <div class="mb-3">
                     <label class="form-label">Médico</label>
-                    <input type="text" class="form-control" id="medico">
+                    <input type="text" name="medico" id="medico" value="{{data.medico}}" class="form-control" id="medico">
                     <div class="form-text"></div>
                 </div>
 
@@ -77,7 +77,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar documento</button>
-        
+        <button type="button" class="btn btn-primary btn-sm col-xs-2 margin-left" (click)="onClickGETolaMundo()">OlaMundo</button>
     </form>
 
 </div>
