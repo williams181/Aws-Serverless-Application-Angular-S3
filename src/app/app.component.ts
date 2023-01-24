@@ -18,15 +18,22 @@ export class AppComponent {
 
   constructor(private http: HttpClient) { }
 
+  onClickGETolaMundo() {
+    // const headers = new HttpHeaders()
+    // const headers = { '': '' };
+    // const body = { title: '' };
+    this.http.get<any>('https://9pe3b80wee.execute-api.us-east-1.amazonaws.com/prod/buscar/1').subscribe(data => { console.log(data) });
+    
+  }
+
   ngOnInit() {      
       // Simple POST request with a JSON body and response type <any>
-      this.http.post<Article>('http://person/create', { title: 'Angular POST Request Example' }).subscribe(data => {
+      this.http.post<Article>('http://person/createhttp://person/create', { title: 'Angular POST Request Example' }).subscribe(data => {
           this.idCrm = data.idCrm;
           this.nome = data.nome;
           this.sobreNome = data.sobreNome;
           this.endereco = data.endereco;
           this.idade = data.idade;
-
       })
   }
 
