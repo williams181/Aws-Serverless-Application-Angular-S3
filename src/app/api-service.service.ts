@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { interfaceApiService } from './InterfaceApiService';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs';
+
 
 interface Response { results: interfaceApiService[] }
 @Injectable({
@@ -15,7 +15,7 @@ export class ApiServiceService {
   constructor(private httpCliente: HttpClient) { }
 
 
-  Buscar(): Observable<ApiServiceService[]>{
+  Buscar(): Observable<any>{
 
     // const headers = new HttpHeaders ({
     //   "Access-Control-Allow-Origin": "",
@@ -23,7 +23,7 @@ export class ApiServiceService {
 
     //const requestOptions = {headers:headers,  method: 'GET',   redirect: 'follow'}
 
-    return this.httpCliente.get<ApiServiceService[]>("/api/arquivo/1");
+    return this.httpCliente.get<any>("/api/arquivo/2");
 
   }
 

@@ -17,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     FormComponent,

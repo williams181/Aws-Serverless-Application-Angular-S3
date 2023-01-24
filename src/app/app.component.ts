@@ -11,71 +11,17 @@ import {of} from 'rxjs';
 })
 
 export class AppComponent implements OnInit{
+ 
   title = 'aws-serverless-application-angular';
 
+  tabela: Array<interfaceApiService> = new Array();
 
-  tabela: any =[];
-
-  ngOnInit(): void {
+  ngOnInit(){
       this.api.Buscar().subscribe((res)=>
         {this.tabela = res;
-        console.log(this.tabela)} )
+        console.log(this.tabela)}, error => {console.log("erroa ao listar", error)})
   }
 
   constructor(private api: ApiServiceService){}
- 
-
-  // Buscar(){
-  //   this.api.Buscar()
-  //   .then(ApiServiceService  => console.log(ApiServiceService))
-  //   .catch(error => console.error(error))
-  // }
-
-  BuscarPorId(){
-    this.api.BuscarPorId(8)
-    .then(ApiServiceService => console.log(ApiServiceService))
-    .catch(error => console.error(error))
-  }
-
-  Salvar(){
-    const arquivo: interfaceApiService = {
-      id: 9,
-      medico: "jow",
-      CRM: 2323423,
-      hospital: "clinicas",
-      CNPJ: "23123423",
-      paciente: "vitu",
-      convenio: "sus",
-      acomodacao: "cama",
-      procedimento: "injeção"
-    };
-
-    this.api.Salvar(arquivo)
-    .then(ApiServiceService => console.log("adicionado!"))
-    .catch(error => console.error(error));
-
-  }
-
-  Atualizar(){
-    const arquivo: interfaceApiService = {
-      id: 1,
-      medico: "jow",
-      CRM: 2323423,
-      hospital: "clinicas",
-      CNPJ: "23123423",
-      paciente: "vitu",
-      convenio: "sus",
-      acomodacao: "cama",
-      procedimento: "injeção"
-    };
-
-    this.api.Atualizar(arquivo)
-    .then(ApiServiceService => console.log("adicionado!"))
-    .catch(error => console.error(error));
-  }
-
-  Delete(){
-    this.api.Delete(1).then(res => ("removido com sucesso !"+res)).catch(error => console.error(error))
-  }
 
 }
