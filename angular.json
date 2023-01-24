@@ -65,6 +65,8 @@
             },
             "development": {
               "browserTarget": "aws-serverless-application-angular:build:development"
+             
+
             }
           },
           "defaultConfiguration": "development"

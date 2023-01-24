@@ -1,48 +1,81 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+
+import { ApiServiceService } from './api-service.service';
+import { interfaceApiService } from './InterfaceApiService';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  
-  title = 'AWS';
 
-  idCrm: any;
-  nome: any;
-  sobreNome: any;
-  endereco: any;
-  idade: any;
+export class AppComponent implements OnInit{
+  title = 'aws-serverless-application-angular';
 
-  constructor(private http: HttpClient) { }
 
-  onClickGETolaMundo() {
-    // const headers = new HttpHeaders()
-    // const headers = { '': '' };
-    // const body = { title: '' };
-    this.http.get<any>('https://9pe3b80wee.execute-api.us-east-1.amazonaws.com/prod/buscar/1').subscribe(data => { console.log(data) });
-    
+  tabela: any =[];
+
+  ngOnInit(): void {
+      this.api.Buscar().subscribe((res)=>
+        {this.tabela = res;
+        console.log(this.tabela)} )
   }
 
-  ngOnInit() {      
-      // Simple POST request with a JSON body and response type <any>
-      this.http.post<Article>('http://person/createhttp://person/create', { title: 'Angular POST Request Example' }).subscribe(data => {
-          this.idCrm = data.idCrm;
-          this.nome = data.nome;
-          this.sobreNome = data.sobreNome;
-          this.endereco = data.endereco;
-          this.idade = data.idade;
-      })
+  constructor(private api: ApiServiceService){}
+ 
+
+  // Buscar(){
+  //   this.api.Buscar()
+  //   .then(ApiServiceService  => console.log(ApiServiceService))
+  //   .catch(error => console.error(error))
+  // }
+
+  BuscarPorId(){
+    this.api.BuscarPorId(8)
+    .then(ApiServiceService => console.log(ApiServiceService))
+    .catch(error => console.error(error))
   }
 
-}
+  Salvar(){
+    const arquivo: interfaceApiService = {
+      id: 9,
+      medico: "jow",
+      CRM: 2323423,
+      hospital: "clinicas",
+      CNPJ: "23123423",
+      paciente: "vitu",
+      convenio: "sus",
+      acomodacao: "cama",
+      procedimento: "injeção"
+    };
 
-interface Article {
-  idCrm: number;
-  nome: string;
-  sobreNome: string;
-  endereco: string;
-  idade: number;
+    this.api.Salvar(arquivo)
+    .then(ApiServiceService => console.log("adicionado!"))
+    .catch(error => console.error(error));
+
+  }
+
+  Atualizar(){
+    const arquivo: interfaceApiService = {
+      id: 1,
+      medico: "jow",
+      CRM: 2323423,
+      hospital: "clinicas",
+      CNPJ: "23123423",
+      paciente: "vitu",
+      convenio: "sus",
+      acomodacao: "cama",
+      procedimento: "injeção"
+    };
+
+    this.api.Atualizar(arquivo)
+    .then(ApiServiceService => console.log("adicionado!"))
+    .catch(error => console.error(error));
+  }
+
+  Delete(){
+    this.api.Delete(1).then(res => ("removido com sucesso !"+res)).catch(error => console.error(error))
+  }
+
 }

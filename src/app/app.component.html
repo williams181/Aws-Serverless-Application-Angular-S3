@@ -10,13 +10,46 @@
 
 <body ng-app="">
 
-    <app-navbar></app-navbar>
+    <table id="table" style="color:black" class="table table-dark table-striped-columns" 
+   >
+        <tr>
+            <th>medico</th>
+            <th>CRM</th>
+            <th>Hospital</th>
+            <th>CNPJ</th>
+            <th>Paciente</th>
+            <th>Convenio</th>
+            <th>Acomodação</th>
+            <th>Procedimento</th>
+        </tr>
+        <tr *ngFor="let table of tabela">
+            <td >{{tabela.medico | async}}</td>
+            <td >{{table.CRM}}</td> 
+            <th >{{table.hospital}}</th>
+            <td >{{table.CNPJ}}</td>
+            <td >{{table.paciente}}</td>
+            <td >{{table.acomodacao}}</td>
+            <td >{{table.procedimento}}</td>
+            <td>
+                <a id="acoes" style="width: 50px; padding:2px;" class="btn btn-dark">Apagar</a>
+                <a id="acoes" class="btn btn-dark">Editar</a>
+            </td>
+        </tr>
+    </table>
+
+    <pre>
+        {{tabela | async | json}}
+    </pre>
+
 
     <div class="container mt-5">
 
-        <h3 class="fas fa-home me-4">Registro de contas Médicas (Protótipo)</h3>
+        <h1>AWS Serverless application Angular</h1>
+        <br>
+        <h3>Registro de contas Médicas (Protótipo)</h3>
 
     </div>
+    
 
     <div class="fas fa-home me-1">
 
@@ -28,13 +61,101 @@
 
     <div class="container mt-5">
 
-        <app-list></app-list>
+        <h1></h1>
+
+        <form>
+
+            <!-- <div class="form-group">
+                <label for="exampleFormControlFile1">Selecione o documento</label>
+                <input type="file" class="form-control-file" id="registroAnestesico">
+            </div> -->
+
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Data do Evento</label>
+                        <input type="date" class="form-control" id="dataEvento">
+                        <div class="form-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <input type="hidden" class="form-control" name="id" id="medico" value="1">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Médico</label>
+                        <input type="text" class="form-control" name="nome" id="medico">
+                        <div class="form-text"></div>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">CRM</label>
+                        <input type="text" name="CRM" class="form-control" id="crm">
+                        <div class="form-text"></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Hospital</label>
+                        <input type="text" class="form-control" id="hospital">
+                        <div class="form-text"></div>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">CNPJ</label>
+                        <input type="text" class="form-control" id="cnpj">
+                        <div class="form-text"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Paciente</label>
+                <input type="text" class="form-control" id="paciente">
+                <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Convênio</label>
+                <input type="text" class="form-control" id="convenio">
+                <div class="form-text"></div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Acomodação</label>
+                <input type="text" class="form-control" id="acomodacao">
+                <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Procedimento</label>
+                <input type="text" class="form-control" id="procedimento">
+                <div class="form-text"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar documento</button>
+            <button (click)="BuscarPorId()" type="submit" class="btn btn-primary">Busca</button>
+            <button (click)="Salvar()" type="submit" class="btn btn-primary">Cadastro</button>
+            <button (click)="Atualizar()" type="submit" class="btn btn-primary">Atualizar</button>
+            <button (click)="Delete()" type="submit" class="btn btn-primary">Deletar</button>
+        </form>
+        <br><br>
 
     </div>
 
     <br>
 
-    <app-footer></app-footer>
+  
+
+
+    <!-- Nome Hospital, CNPJ, Nome Paciente, Nome Médico, CRM, Procedimento, Acomodação, Convenio, Data do Evento ,-->
 
 </body>
 
