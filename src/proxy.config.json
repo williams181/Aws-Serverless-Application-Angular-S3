@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://9cl2eyzgue.execute-api.us-east-1.amazonaws.com/new",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

@@ -9,7 +9,7 @@ import { Data } from '@angular/router';
 })
 export class FormComponent {
 
-  data: any = [];
+  data: any;
 
   nomeHospital: any;
   cnpj: any;
@@ -26,15 +26,13 @@ export class FormComponent {
 
   constructor(private http: HttpClient) { }
 
-  onClickGETolaMundo() {
-    // const headers = new HttpHeaders()
-    // const headers = { '': '' };
-    // const body = { title: '' };
-    // const headers = ({"Access-Control-Allow-Origin": "*",});
-    this.http.get<any>('/api/buscar/1').subscribe((data: any) => {
-      this.medico = data;
-    });
-  }
+  // onClickGETData() {
+  //   // const headers = new HttpHeaders()
+  //   // const headers = { '': '' };
+  //   // const body = { title: '' };
+  //   // const headers = ({"Access-Control-Allow-Origin": "*",});
+  //   this.http.get<any>('/api/buscar/1').subscribe(data => console.log(data));
+  // }
 
   onClickRegister() {          
     this.http.post<Article>('/api/criar', { title: 'Angular POST Request Example' }).subscribe(data => {

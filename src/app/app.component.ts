@@ -18,6 +18,16 @@ export class AppComponent {
 
   constructor(private http: HttpClient) { }
 
+
+  onClickGETData() {
+    // const headers = new HttpHeaders()
+    // const headers = { '': '' };
+    // const body = { title: '' };
+    // const headers = ({"Access-Control-Allow-Origin": "*",});
+    const headers = ({"Content-Type": "application/json", "Accept": "application/json"});
+    this.http.get<any>('/api/buscar/1', { headers }).subscribe(data => {console.log(data)});
+  }
+
   // onClickGETolaMundo() {
   //   // const headers = new HttpHeaders()
   //   // const headers = { '': '' };
