@@ -62,12 +62,12 @@
           "configurations": {
             "production": {
               "browserTarget": "aws-serverless-application-angular:build:production",
-              "proxyConfig": "proxy-local.conf.json"
+              "proxyConfig": "proxy.config.js"
 
             },
             "development": {
               "browserTarget": "aws-serverless-application-angular:build:development",
-              "proxyConfig": "proxy-local.conf.json"
+              "proxyConfig": "proxy.config.js"
 
             }
           },
