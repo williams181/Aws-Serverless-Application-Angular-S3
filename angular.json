@@ -61,11 +61,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "aws-serverless-application-angular:build:production"
+              "browserTarget": "aws-serverless-application-angular:build:production",
+              "proxyConfig": "proxy-local.conf.json"
+
             },
             "development": {
-              "browserTarget": "aws-serverless-application-angular:build:development"
-             
+              "browserTarget": "aws-serverless-application-angular:build:development",
+              "proxyConfig": "proxy-local.conf.json"
 
             }
           },

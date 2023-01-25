@@ -22,9 +22,9 @@
             <th>Procedimento</th>
           
         </tr>
-        <tr  *ngFor="let list of tabela | keyvalue">
-            <div>{{list.key}} {{list.value}}</div>
-            <td ></td>
+        <tr  *ngFor="let list of Registro | keyvalue">
+            <div>{{list.value}}</div>
+            <td  ></td>
             <td ></td> 
             <th ></th>
             <td ></td>
@@ -39,7 +39,9 @@
         </tr>
     </table>
     
-
+    <pre>
+        {{Registro |  json}}
+    </pre>
 
 
     <div class="container mt-5">
