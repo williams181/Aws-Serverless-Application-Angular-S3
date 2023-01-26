@@ -31,7 +31,7 @@ export class ApiServiceService {
 
 
 
-  BuscarPorId(id:number ){
+  BuscarPorId(id: String ){
     return this.httpCliente.get<interfaceApiService>
     (`/api/arquivo/${id}`).toPromise();
   }

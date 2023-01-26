@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/api-service.service';
+import { AppRoutingModule} from 'src/app/app-routing.module';
 import { interfaceApiService } from 'src/app/InterfaceApiService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -9,6 +11,7 @@ import { interfaceApiService } from 'src/app/InterfaceApiService';
 })
 export class FormComponent implements OnInit{
   title = 'aws-serverless-application-angular';
+  show = true 
 
   arquivo: interfaceApiService ={id: 0,medico :"", CRM:0 ,hospital:"",
   CNPJ: "",
@@ -19,31 +22,29 @@ export class FormComponent implements OnInit{
  
 
 
-  constructor(private api: ApiServiceService){}
+  constructor(private api: ApiServiceService,  private router: Router){ }
   ngOnInit(){
 
   }
  
 
-  // Buscar(){
-  //   this.api.Buscar()
-  //   .then(ApiServiceService  => console.log(ApiServiceService))
-  //   .catch(error => console.error(error))
-  // }
-
-  BuscarPorId(){
-    this.api.BuscarPorId(8)
-    .then(ApiServiceService => console.log(ApiServiceService))
-    .catch(error => console.error(error))
-  }
-
   Salvar(){
+    this.show = false
     this.arquivo.id = this.arquivo.CRM
-    console.log(this.arquivo);
+    if(this.arquivo.id != 0){
+    
     this.api.Salvar(this.arquivo)
-    .then(ApiServiceService => console.log("adicionado!"))
+    .then(ApiServiceService =>  {
+    console.log("adicionado!")
+    this.show = true
+    this.router.navigate(['/list']);
+  
+  })
     .catch(error => console.error(error));
-
+    }else{
+      alert("complete o cadastro");
+      this.show = true
+    }
   }
 
   Atualizar(){

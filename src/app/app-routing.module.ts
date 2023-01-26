@@ -4,6 +4,7 @@ import { FormComponent } from './components/form/form.component';;
 import { ListComponent } from './components/list/list.component';
 
 const routes: Routes = [
+ 
   { path: 'form', component: FormComponent },
   { path: 'list', component: ListComponent },
 ];
