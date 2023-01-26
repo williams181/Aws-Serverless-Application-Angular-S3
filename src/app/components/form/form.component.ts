@@ -54,8 +54,8 @@ export class FormComponent implements OnInit{
     .catch(error => console.error(error));
   }
 
-  Delete(){
-    this.api.Delete(this.arquivo.CRM).then(res => console.log("removido com sucesso !"+res)).catch(error => console.error(error))
+  Delete(id: number){
+    this.api.Delete(id).then(res => console.log("removido com sucesso !"+res)).catch(error => console.error(error))
   }
 
 }

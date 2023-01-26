@@ -23,7 +23,7 @@ export class ApiServiceService {
 
     //const requestOptions = {headers:headers,  method: 'GET',   redirect: 'follow'}
 
-    return this.httpCliente.get<any>("/api/arquivo");
+    return this.httpCliente.get<any>("/api/arquivo/");
 
   }
 

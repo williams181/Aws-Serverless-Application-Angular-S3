@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiServiceService } from './api-service.service';
 import { interfaceApiService } from './InterfaceApiService';
-import {of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +15,16 @@ export class AppComponent implements OnInit{
   title = 'aws-serverless-application-angular';
 
 
-  Registro: Array<any> = new Array();
+ public Registro$!: Observable<any>;
 
   ngOnInit(){
-      this.api.Buscar().subscribe((res: any)=>
-        {this.Registro = res;
-        console.log(this.Registro)
-        console.log(typeof res)}, error => {console.log("error ao listar", error)})
+    this.Registro$ =  this.api.Buscar();
   }
 
   constructor(private api: ApiServiceService){}
+
+  Delete(id: number){
+    this.api.Delete(id).then(res => console.log("removido com sucesso !"+res)).catch(error => console.error(error))
+  }
 
 }
