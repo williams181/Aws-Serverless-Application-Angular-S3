@@ -13,6 +13,8 @@ import { FormComponent } from './components/form/form.component';
 import { ListComponent } from './components/list/list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -23,7 +25,9 @@ registerLocaleData(localePt, 'pt');
     FormComponent,
     ListComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    HeaderComponent
 
   ],
   imports: [

@@ -11,36 +11,24 @@
 <body ng-app="">
    
     <nav id="navBar" class="navbar ">
-        <div id="navList" class="container-fluid fixed-top ">
-          
+        <div id="navList" class="container-fluid fixed-top">
           
           <div class="offcanvas-top" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-           
+            
             <div class="offcanvas-body">
+
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" routerLink="/form">Cadastro</a>
+                  <a class="btn btn-outline-light btn-lg" aria-current="page" routerLink="/form">Home</a>
                 </li>
+                <br>
                 <li class="nav-item">
-                  <a class="nav-link" routerLink="/list">Lista</a>
+                  <a class="btn btn-outline-light btn-lg" routerLink="/list">Lista de Contas</a>
                 </li>
-                <li class="nav-item dropdown">
-                  
-                    <div ngbDropdown class="d-inline-block">
-                        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-
-                        <button ngbDropdownItem>Action - 1</button>
-
-                        <button ngbDropdownItem>Another Action</button>
-
-                        <button ngbDropdownItem>Something else is here</button>
-
-                        </div>
-
-                        </div>
-                    </li>
+                <br>
+                <li class="nav-item">
+                  <a class="btn btn-outline-light btn-lg" routerLink="/form">Registro de Contas</a>
+                </li>
               </ul>
               
             </div>
@@ -48,29 +36,18 @@
         </div>
       </nav>
     
-        
     <section id="sectionBody">   
     
-    <div class="fas fa-home me-1">
+      <div class="fas fa-home me-1">
 
-        <router-outlet></router-outlet>
+          <router-outlet></router-outlet>
 
-    </div>
+      </div>
 
- 
-
-</section>
-
+    </section>
 
     <!-- Nome Hospital, CNPJ, Nome Paciente, Nome Médico, CRM, Procedimento, Acomodação, Convenio, Data do Evento ,-->
 
-
-
 </body>
-
-
-
-
-  
 
 </html>
