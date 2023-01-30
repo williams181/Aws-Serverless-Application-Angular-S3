@@ -5,5 +5,26 @@
 }
 
 
-
-
+thead{
+    background:  #2a2e4e;
+}
+tbody{
+    background:  #293949;
+}
+td  {
+    color:white;
+}
+th {
+    color:  #406a94;
+}
+#acaoApagar{
+  
+    float:left;
+    width: 70px;
+    margin-bottom: 5%;
+}
+#acaoApagar{
+    
+    float:right;
+   
+}

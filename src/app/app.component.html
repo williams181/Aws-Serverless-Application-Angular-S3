@@ -10,21 +10,18 @@
 
 <body ng-app="">
    
-    <nav id="navBar" class="navbar ">
-        <div id="navList" class="container-fluid fixed-top ">
-          
-          
-          <div class="offcanvas-top" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <nav id="navBar" >
+                               
            
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <div id="navList">
+              <ul  class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" routerLink="/form">Cadastro</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" routerLink="/list">Lista</a>
                 </li>
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                   
                     <div ngbDropdown class="d-inline-block">
                         <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
@@ -40,11 +37,11 @@
                         </div>
 
                         </div>
-                    </li>
+                    </li> -->
               </ul>
               
-            </div>
-          </div>
+            
+          
         </div>
       </nav>
     
@@ -53,8 +50,8 @@
     
     <div class="fas fa-home me-1">
 
-        <router-outlet></router-outlet>
-
+        <router-outlet ></router-outlet>
+       
     </div>
 
  
