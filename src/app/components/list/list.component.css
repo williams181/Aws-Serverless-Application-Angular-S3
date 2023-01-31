@@ -3,7 +3,9 @@
     
     
 }
-
+#acoes {
+    flex-direction: row;
+}
 
 thead{
     background:  #2a2e4e;
