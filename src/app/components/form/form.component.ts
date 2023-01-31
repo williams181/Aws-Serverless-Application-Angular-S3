@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 export class FormComponent implements OnInit{
   title = 'aws-serverless-application-angular';
   show = true 
+  att = true
  
   form!: FormGroup;
   submited =  false
@@ -23,21 +24,25 @@ export class FormComponent implements OnInit{
   constructor(private api: ApiServiceService,  private router: Router, private fb: FormBuilder, private route: ActivatedRoute){ }
  
   ngOnInit(): void{
+
     this.route.params.subscribe(
       ((params : any) =>{
           const id = params['id']
           console.log(id)
           
-          this.api.BuscarPorId(id).subscribe(res =>{
+          if(id != undefined){
+            this.att =false
+            this.api.BuscarPorId(id).subscribe(res =>{
             this.Editar(res.Arquivos);
-            console.log(res.Arquivos)})
-     
+            console.log(res.Arquivos)
+            this.att =true })
+          }
           
       })
     )
 
     this.form = this.fb.group({
-      id: [0],
+      id: null,
       medico :['', Validators.required],
       CRM:[0, Validators.required],
       hospital:['', Validators.required],
@@ -68,47 +73,55 @@ export class FormComponent implements OnInit{
   }
 
 
-  BuscarPorId(id: String){
-    this.api.BuscarPorId(id)
-  }
-
   hasError(field: string){
     return this.form.get(field)?.errors
+    
+  }
+ 
+  Validador(){
+    this.submited =true
+    this.show = false
+    if(this.form.value.id == null){
+      this.Salvar()
+    }else{
+      this.Atualizar()
+    }
   }
  
 
   Salvar(){
-    this.submited =true
 
-    console.log(this.form.value)
     if(this.form.valid){
       console.log("valido")
-
-      this.show = false
+      console.log(this.form.value)
       this.api.Salvar(this.form.value)
       .then(ApiServiceService =>  {
       console.log("adicionado!")
-      this.show = true
       this.router.navigate(['/list']);
       })
       .catch(error => console.error(error));
     
     }else{
-      alert("preencha todos os campos")
+      console.log("invalido")
+      this.show = true
     }
-   
-    
-    
-
-   
   }
 
-  Atualizar(){
 
-    // this.arquivo.id = this.arquivo.CRM
-    // this.api.Atualizar(this.arquivo)
-    // .then(ApiServiceService => console.log("atualizado!"))
-    // .catch(error => console.error(error));
+  Atualizar(){
+    
+    if(this.form.valid){
+      console.log(this.form.value)
+      this.api.Atualizar(this.form.value)
+      .then(ApiServiceService => {
+        console.log("atualizado!")
+        this.router.navigate(['/list']);
+      })
+      .catch(error => console.error(error));
+    }else{
+      this.show = true
+      console.log("invalido")
+    }
   }
 
   Delete(id: number){
@@ -116,7 +129,5 @@ export class FormComponent implements OnInit{
   }
 
 }
-function forEach(i: any, res: interfaceApiService) {
-  throw new Error('Function not implemented.');
-}
+
 

@@ -25,6 +25,7 @@ registerLocaleData(localePt, 'pt');
     ListComponent,
     NavbarComponent,
     FooterComponent,
+    
   
   ],
   imports: [
@@ -33,7 +34,8 @@ registerLocaleData(localePt, 'pt');
     NgbModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   
     
   ],
   providers: [

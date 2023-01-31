@@ -37,12 +37,14 @@
               
               <td>
                 <div>
-                  <a id="acaoApagar" *ngIf="hiddenDelete; else loadingDelete" (click)='Delete(list.id)' class="btn btn-dark">Apagar</a>
+                  <a id="delete"  *ngIf="hiddenDelete; else loadingDelete" (click)='Delete(list.id)' class="btn btn-dark">Apagar</a>
+                  
+
                   <ng-template #loadingDelete>
-                    <button class="btn btn-primary" type="button" disabled>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        Loading...
-                    </button>
+                    <button id="delete" class="btn btn-dark" type="button" disabled>Apagar </button>
+                    <span class="spinner-grow" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </span>
                 </ng-template>
                 </div>
                 <div>
@@ -53,6 +55,18 @@
           </tr>
       </tbody>
     </table>
+
+    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
+      <div class="toast-header">
+        <img src="..." class="rounded me-2" alt="...">
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Hello, world! This is a toast message.
+      </div>
+    </div>
  
 
 
@@ -66,3 +80,4 @@
   </div>
   </ng-template>
 
+ 

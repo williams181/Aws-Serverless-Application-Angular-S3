@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, BootstrapOptions } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import { ApiServiceService } from 'src/app/api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { interfaceApiService } from 'src/app/InterfaceApiService';
+
 
 
 @Component({
-  selector: 'app-list',
+  selector: 'snack-bar-overview-app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
@@ -17,6 +17,7 @@ export class ListComponent implements OnInit{
   hiddenEdit: boolean = true;
   public Registro$!: Observable<any>;
 
+
   
 
 
@@ -25,14 +26,13 @@ export class ListComponent implements OnInit{
  ngOnInit(){
    this.Registro$ =  this.api.Buscar();
    this.Registro$.subscribe(res=> {console.log(res.Registros)
-    
     this.show = true;
-  });
-   
-  
+  }); 
  }
 
- constructor(private api: ApiServiceService, private router: Router,private route: ActivatedRoute){}
+ constructor(private api: ApiServiceService, private router: Router,
+              private route: ActivatedRoute){}
+
 
 
  BuscarPorId(id: String){
@@ -44,6 +44,7 @@ export class ListComponent implements OnInit{
 
  Delete(id: number){
    this.hiddenDelete = false;
+ 
    this.api.Delete(id).then(res =>{
      console.log("removido com sucesso !"+res)
      this.hiddenDelete = true;
