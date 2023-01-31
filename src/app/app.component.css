@@ -19,6 +19,7 @@ margin-left: 5%;
 
 #navList li a{
     color:white;
+    margin-bottom: 5%;
 }
 a:hover{
     background-color: #017af3;

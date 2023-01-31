@@ -3,7 +3,9 @@
     
     
 }
-
+#acoes {
+    flex-direction: row;
+}
 
 thead{
     background:  #2a2e4e;
@@ -17,14 +19,10 @@ td  {
 th {
     color:  #406a94;
 }
-#delete{
+#acaoApagar{
   
     float:left;
     width: 70px;
-    margin-bottom: 5%;
-}
-#acaoApagar{
-    
-    float:right;
-   
+    margin-top: 5%;
+    margin-left:10%;
 }

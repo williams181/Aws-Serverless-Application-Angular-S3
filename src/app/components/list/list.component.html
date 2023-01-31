@@ -1,75 +1,54 @@
    
+<div class="container-md mt-3">
+  <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Contas Médicas</h1>
+</div>
 
-
-   <div class="container mt-5">
-    <h1>Registro de contas Médicas</h1>
-  </div>
-
-
-
-   <table id="table"   class="table"  >
-      <thead >
-       <tr >
-           <th>medico</th>
-           <th>CRM</th>
-           <th>Hospital</th>
-           <th>CNPJ</th>
-           <th>Paciente</th>
-           <th>Convenio</th>
-           <th>Acomodação</th>
-           <th>Procedimento</th>
-           <th>Ações</th>
-         
-       </tr>
+<div style="align-items: center; justify-content: center;">
+  <table class="table table-bordered">
+      <thead>
+        <tr style="align-items: center; justify-content: center; text-align: center;">
+          <th scope="col" style="color: aliceblue;">Médico</th>
+          <th scope="col" style="color: aliceblue;">CRM</th>
+          <th scope="col" style="color: aliceblue;">Hospital</th>
+          <th scope="col" style="color: aliceblue;">CNPJ</th>
+          <th scope="col" style="color: aliceblue;">Paciente</th>
+          <th scope="col" style="color: aliceblue;">Convenio</th>
+          <th scope="col" style="color: aliceblue;">Acomodação</th>
+          <th scope="col" style="color: aliceblue;">Procedimento</th>
+          <th scope="col" style="color: aliceblue;">Ações</th>
+      </tr>
    </thead>
    
-      <tbody *ngIf="Registro$ | async as registro"  >
-          <tr   *ngFor="let list of registro.Registros">
+    <tbody *ngIf="Registro$ | async as registro"  >
+        <tr  style="align-items: center; justify-content: center; text-align: center;"  *ngFor="let list of registro.Registros">
           
-              <td >{{list.medico}}</td>
-              <td >{{list.CRM}}</td> 
-              <td >{{list.hospital}}</td>
-              <td >{{list.CNPJ}}</td>
-              <td >{{list.paciente}}</td>
-              <td >{{list.convenio}}</td>
-              <td >{{list.acomodacao}}</td>
-              <td >{{list.procedimento}}</td>
+            <td style="color: aliceblue;">{{list.medico}}</td>
+            <td style="color: aliceblue;">{{list.CRM}}</td> 
+            <td style="color: aliceblue;">{{list.hospital}}</td>
+            <td style="color: aliceblue;">{{list.CNPJ}}</td>
+            <td style="color: aliceblue;">{{list.paciente}}</td>
+            <td style="color: aliceblue;">{{list.convenio}}</td>
+            <td style="color: aliceblue;">{{list.acomodacao}}</td>
+            <td style="color: aliceblue;">{{list.procedimento}}</td>
               
-              <td>
-                <div>
-                  <a id="delete"  *ngIf="hiddenDelete; else loadingDelete" (click)='Delete(list.id)' class="btn btn-dark">Apagar</a>
-                  
-
-                  <ng-template #loadingDelete>
-                    <button id="delete" class="btn btn-dark" type="button" disabled>Apagar </button>
-                    <span class="spinner-grow" role="status">
-                      <span class="visually-hidden">Loading...</span>
-                    </span>
+            <td style="align-items: center; justify-content: center; text-align: center;">
+              <div>
+                <a id="acaoEdit" (click)='BuscarPorId(list.id)' class="btn btn-primary">Editar</a>
+              </div>
+              <div>
+                <a id="acaoApagar" *ngIf="hiddenDelete; else loadingDelete" (click)='Delete(list.id)' class="btn btn-danger">Apagar</a>
+                <ng-template #loadingDelete>
+                    <button class="btn btn-danger" type="button" disabled>
+                        <span class="spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button>
                 </ng-template>
-                </div>
-                <div>
-                  <a id="acaoEdit" (click)='BuscarPorId(list.id)' class="btn btn-dark">Editar</a>
-                </div>
-                  
-              </td>
-          </tr>
-      </tbody>
-    </table>
-
-    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
-      <div class="toast-header">
-        <img src="..." class="rounded me-2" alt="...">
-        <strong class="me-auto">Bootstrap</strong>
-        <small>11 mins ago</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        Hello, world! This is a toast message.
-      </div>
-    </div>
- 
-
-
+              </div>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
 
    <div *ngIf="show; else loading"></div>
    <ng-template #loading>

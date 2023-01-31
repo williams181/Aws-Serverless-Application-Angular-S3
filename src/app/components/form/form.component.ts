@@ -3,7 +3,7 @@ import { ApiServiceService } from 'src/app/api-service.service';
 import { AppRoutingModule} from 'src/app/app-routing.module';
 import { interfaceApiService } from 'src/app/InterfaceApiService';
 import { ActivatedRoute, Router,ParamMap } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -43,7 +43,7 @@ export class FormComponent implements OnInit{
 
     this.form = this.fb.group({
       id: null,
-      medico :['', Validators.required],
+      medico :['', Validators.required, Validators.maxLength(14)],
       CRM:[0, Validators.required],
       hospital:['', Validators.required],
       CNPJ: ['', Validators.required],
