@@ -1,0 +1,79 @@
+
+
+<div class="conteiner" *ngIf="!forgotPass">
+
+ 
+<div class="row">
+        <div class="auth-box">
+            <div *ngIf="!isConfirm">
+              <div class="header">
+                <h2>Bem vindo</h2>
+
+                <h4>Acesse sua conta</h4>
+                
+              </div>
+              <div class="form">
+         
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control"  [(ngModel)]="user.email" >
+                                
+                        </div>
+                      </div>
+
+                    
+                      <div class="col">
+                          <div class="mb-3">
+                              <label class="form-label">Senha</label>
+                              <input type="password" class="form-control"   [(ngModel)]="user.password" >
+                            
+                      </div>
+                    </div>
+
+                    <button (click)="loginCognito()" id="cad" class="btn  btn-outline-light btn-lg">Entrar</button>
+      
+                    <button (click)="forgotPassClicked()" id="forget" class="btn  btn-outline-light">Esqueci a senha</button>
+                    
+                    <p>Não tem conta ?</p> <a  href="/signup">Fazer Cadastro</a>
+
+            
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--           esqueci senha        -->
+
+<div class="conteiner" *ngIf="forgotPass" >
+        <div class="col esqueciSenha">
+            <div class="mb-3">
+
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control"  [(ngModel)]="user.email" >
+                    
+            </div>
+        </div>
+        <button (click)="forgotPassword()" id="butForget" class="btn  btn-outline-light btn-lg">Enviar</button>
+
+       
+</div>
+
+<div class="conteiner " *ngIf="isConfirm" >
+        <div class="cod" >
+                    
+            <h4> Um codigo de verificação foi enviado para o Email {{user.email}}</h4>
+
+        <div class="form">
+            <input type="text" class="form-control" name="codigo" placeholder="Digite o codigo" [(ngModel)]="user.code">
+            <div class="form-text"></div>
+            <input type="text" class="form-control" name="novaSenha" placeholder="Digite Nova Senha" [(ngModel)]="newPass">
+            <div class="form-text"></div>
+            <button  (click)="newPassword()" id="butForget" class="btn btn-outline-light" >Confirmar</button>
+        </div>
+
+        </div>
+
+
+</div>

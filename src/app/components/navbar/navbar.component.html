@@ -1,52 +1,55 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <!-- Container wrapper -->
-  <div class="container-fluid">
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">AWS</a>
 
-    <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
+    <nav id="navBar" >
+                               
+           
+      <div id="navList">
+        <ul  class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <h1 class="text-hide" style="background-image: url('/docs/4.1/assets/brand/bootstrap-solid.svg'); width: 50px; height: 50px; color:bisque">Fatura.IA</h1>
+          </li>
+          <br>
+          <li class="nav-item">
+            <a class="btn btn-outline-light btn-lg" aria-current="page" routerLink="/form">Registro</a>
+          </li>
+          <br>
+          <li class="nav-item">
+            <a id="" class="btn btn-outline-light btn-lg" routerLink="/list">Listagem</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            
+              <div ngbDropdown class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
 
-    <!-- Collapsible wrapper -->
-    <div
-      class="collapse navbar-collapse"
-      id="navbarSupportedContent"
-      mdbCollapse
-    >
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Registar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Listar</a>
-        </li>
-      </ul>
-      <!-- Left links -->
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
 
-      <!-- Search form -->
-      <form class="d-flex input-group w-auto">
-        <input
-          type="search"
-          class="form-control"
-          placeholder="Pesquisar..."
-          aria-label="search"
-        />
-        <button class="btn btn-outline-primary" type="button">
-          Buscar
-        </button>
-      </form>
-    </div>
-    <!-- Collapsible wrapper -->
+                  <button ngbDropdownItem>Action - 1</button>
+
+                  <button ngbDropdownItem>Another Action</button>
+
+                  <button ngbDropdownItem>Something else is here</button>
+
+                  </div>
+
+                  </div>
+              </li> -->
+        </ul>
+        
+      
+        <button (click)="signOut()" id="sair" class="btn  btn-outline-light btn-lg">Sair</button>
   </div>
-  <!-- Container wrapper -->
+
+  
+
 </nav>
-<!-- Navbar -->
+
+<section id="sectionBody">   
+  
+  <div class="fas fa-home me-1">
+
+      <router-outlet></router-outlet>
+     
+  </div>
+
+
+
+</section>

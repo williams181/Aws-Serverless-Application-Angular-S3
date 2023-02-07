@@ -1,9 +1,10 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { interfaceApiService } from './InterfaceApiService';
+import { interfaceApiService } from '../models/InterfaceApiService';
 import { Observable, take } from 'rxjs';
 import { FormComponent} from 'src/app/components/form/form.component';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 
 interface Response { results: interfaceApiService[] }
@@ -47,5 +48,20 @@ export class ApiServiceService {
   Delete(id: number){
     return this.httpCliente.delete(`/api/delete/${id}`).toPromise()
   }
+
+//*************autenticação cognito**** */
+
+Criar(arquivo: User){
+  console.log(arquivo.name, arquivo.email, arquivo.password)
+  return this.httpCliente.post<User>(`/api/authenticationcreate`,arquivo).toPromise();
+  
+}
+
+confirmar(arquivo: User){
+  console.log(arquivo.name, arquivo.email, arquivo.code)
+  return this.httpCliente.post<User>(`/api/authenticationconfirm`,arquivo).toPromise();
+  
+}
+
 
 }

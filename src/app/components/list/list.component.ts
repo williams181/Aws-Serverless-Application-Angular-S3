@@ -1,8 +1,10 @@
 import { Component, OnInit, BootstrapOptions } from '@angular/core';
 import {Observable, of} from 'rxjs';
-import { ApiServiceService } from 'src/app/api-service.service';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { CognitoService } from 'src/app/services/cognito.service';
+import { User } from 'src/app/models/user';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -24,6 +26,7 @@ export class ListComponent implements OnInit{
 
 
  ngOnInit(){
+  this.getUser()
    this.Registro$ =  this.api.Buscar();
    this.Registro$.subscribe(res=> {console.log(res.Registros)
     this.show = true;
@@ -31,9 +34,18 @@ export class ListComponent implements OnInit{
  }
 
  constructor(private api: ApiServiceService, private router: Router,
-              private route: ActivatedRoute){}
+              private route: ActivatedRoute, private cognito: CognitoService,private snackBar: MatSnackBar){}
 
-
+  private getUser(){
+    this.cognito.getUser()
+    .then((user: User)=>{
+      if(user){
+        console.log(user)
+      }else{
+        this.router.navigate(['/login']);
+      }
+    })
+  }
 
  BuscarPorId(id: String){
   this.hiddenEdit = false;
@@ -44,14 +56,22 @@ export class ListComponent implements OnInit{
 
  Delete(id: number){
    this.hiddenDelete = false;
- 
+   this.openSnackBar("apagando...","fechar")
    this.api.Delete(id).then(res =>{
      console.log("removido com sucesso !"+res)
      this.hiddenDelete = true;
+     this.openSnackBar("apagado com secesso","fechar")
      this.Registro$ =  this.api.Buscar();
     }).catch(error => console.error(error))
    
  }
+
+ openSnackBar(message: string, action: string) {
+  this.snackBar.open(message, action, {
+    duration: 2000,
+  });
+}
+
 
 
 }

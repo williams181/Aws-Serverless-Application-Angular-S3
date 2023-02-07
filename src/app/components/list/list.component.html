@@ -1,4 +1,6 @@
    
+<app-navbar></app-navbar>
+
 <div class="container-md mt-3">
   <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Contas Médicas</h1>
 </div>
@@ -33,16 +35,11 @@
               
             <td style="align-items: center; justify-content: center; text-align: center;">
               <div>
-                <a id="acaoEdit" (click)='BuscarPorId(list.id)' class="btn btn-primary">Editar</a>
+                <a id="acaoEdit"  (click)='BuscarPorId(list.id)' class="btn btn-primary">Editar</a>
               </div>
               <div>
-                <a id="acaoApagar" *ngIf="hiddenDelete; else loadingDelete" (click)='Delete(list.id)' class="btn btn-danger">Apagar</a>
-                <ng-template #loadingDelete>
-                    <button class="btn btn-danger" type="button" disabled>
-                        <span class="spinner-border-sm" role="status" aria-hidden="true"></span>
-                        Loading...
-                    </button>
-                </ng-template>
+                <a id="acaoApagar"  (click)='Delete(list.id)' class="btn btn-danger">Apagar</a>
+               
               </div>
             </td>
         </tr>

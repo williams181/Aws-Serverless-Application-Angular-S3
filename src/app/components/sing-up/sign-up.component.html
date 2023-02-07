@@ -1,0 +1,60 @@
+
+<div class="conteiner">
+    <div class="row">
+        <div class="auth-box">
+            <div *ngIf="!isConfirm">
+              <div class="header">
+                <h2>Registrar</h2>
+                
+              </div>
+              <div class="form">
+               
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Nome</label>
+                                <input type="text" class="form-control"  [(ngModel)]="user.name" >
+                                <div class="form-text"></div>
+                        </div>
+                      </div>
+
+                      
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control"  [(ngModel)]="user.email" >
+                                <div class="form-text"></div>
+                        </div>
+                      </div>
+
+                    
+                      <div class="col">
+                          <div class="mb-3">
+                              <label class="form-label">Senha</label>
+                              <input type="password" class="form-control"   [(ngModel)]="user.password" >
+                              <div class="form-text">senha deve conter numeros, letras maiuscular e minuscular, caracter especial</div>
+                      </div>
+                    </div>
+
+                    <button (click)="signUpCognito()" id="cad" class="btn  btn-outline-light btn-lg">Cadastrar</button>
+
+                    <p>Já tem conta ?</p> <a  href="/login">Entrar</a>
+
+                  
+      
+              </div>
+            </div>
+
+            <div class="cod" *ngIf="isConfirm">
+              
+                <h4> Um codigo de verificação foi enviado para o Email {{user.email}}</h4>
+
+              <div class="form">
+                <input type="text" name="codigo" placeholder="Digite o codigo" [(ngModel)]="user.code">
+                <button  (click)="confirmLogin()" id="butCod" class="btn btn-outline-light" >Confirmar</button>
+              </div>
+            
+            </div>
+
+        </div>
+    </div>
+</div>

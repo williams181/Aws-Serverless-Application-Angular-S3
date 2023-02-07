@@ -13,6 +13,11 @@ import { FormComponent } from './components/form/form.component';
 import { ListComponent } from './components/list/list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent  } from './components/sing-up/sign-up.component';
+
+import { MatSnackBarModule,} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 registerLocaleData(localePt, 'pt');
@@ -25,10 +30,14 @@ registerLocaleData(localePt, 'pt');
     ListComponent,
     NavbarComponent,
     FooterComponent,
+    LoginComponent,
+    SignupComponent,
+    
     
   
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -37,7 +46,11 @@ registerLocaleData(localePt, 'pt');
     ReactiveFormsModule,
    
     
+    MatSnackBarModule,
+
+
   ],
+ 
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },
   ],

@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ApiServiceService } from 'src/app/api-service.service';
-import { AppRoutingModule} from 'src/app/app-routing.module';
-import { interfaceApiService } from 'src/app/InterfaceApiService';
+import { ApiServiceService } from 'src/app/services/api-service.service';
+
 import { ActivatedRoute, Router,ParamMap } from '@angular/router';
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+
+import { CognitoService } from 'src/app/services/cognito.service';
+import { User } from 'src/app/models/user';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form',
@@ -21,10 +23,12 @@ export class FormComponent implements OnInit{
   submited =  false
 
 
-  constructor(private api: ApiServiceService,  private router: Router, private fb: FormBuilder, private route: ActivatedRoute){ }
+  constructor(private api: ApiServiceService,  private router: Router,
+               private fb: FormBuilder, private route: ActivatedRoute, private cognito: CognitoService,private snackBar: MatSnackBar){ }
  
   ngOnInit(): void{
 
+    this.getUser()
     this.route.params.subscribe(
       ((params : any) =>{
           const id = params['id']
@@ -43,7 +47,7 @@ export class FormComponent implements OnInit{
 
     this.form = this.fb.group({
       id: null,
-      medico :['', Validators.required, Validators.maxLength(14)],
+      medico :['', Validators.required],
       CRM:[0, Validators.required],
       hospital:['', Validators.required],
       CNPJ: ['', Validators.required],
@@ -53,7 +57,24 @@ export class FormComponent implements OnInit{
       procedimento: ['', Validators.required]
     })
   
-  
+  }
+
+  private getUser(){
+    this.cognito.getUser()
+    .then((user: User)=>{
+      if(user){
+        console.log(user)
+      }else{
+        this.router.navigate(['/login']);
+      }
+    })
+  }
+
+  signOut(){
+    this.cognito.signOut()
+    .then(()=>{
+      this.router.navigate(['/login']);
+    })
   }
 
   Editar(arquivo: any){
@@ -97,6 +118,7 @@ export class FormComponent implements OnInit{
       this.api.Salvar(this.form.value)
       .then(ApiServiceService =>  {
       console.log("adicionado!")
+      this.openSnackBar("Salvo com secesso","fechar")
       this.router.navigate(['/list']);
       })
       .catch(error => console.error(error));
@@ -115,6 +137,7 @@ export class FormComponent implements OnInit{
       this.api.Atualizar(this.form.value)
       .then(ApiServiceService => {
         console.log("atualizado!")
+        this.openSnackBar("Editado com secesso","fechar")
         this.router.navigate(['/list']);
       })
       .catch(error => console.error(error));
@@ -124,8 +147,12 @@ export class FormComponent implements OnInit{
     }
   }
 
-  Delete(id: number){
-    this.api.Delete(id).then(res => console.log("removido com sucesso !"+res)).catch(error => console.error(error))
+
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
 }
