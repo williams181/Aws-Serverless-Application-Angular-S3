@@ -60,22 +60,25 @@ export class FormComponent implements OnInit{
   }
 
   private getUser(){
-    this.cognito.getUser()
-    .then((user: User)=>{
+    const user = localStorage.getItem("token")
       if(user){
         console.log(user)
       }else{
         this.router.navigate(['/login']);
       }
-    })
+  
   }
 
   signOut(){
-    this.cognito.signOut()
-    .then(()=>{
-      this.router.navigate(['/login']);
-    })
+    localStorage.removeItem("token")
+    this.router.navigate(['/login']);
   }
+  // signOut(){
+  //   this.cognito.signOut()
+  //   .then(()=>{
+  //     this.router.navigate(['/login']);
+  //   })
+  // }
 
   Editar(arquivo: any){
     console.log("editar", arquivo)

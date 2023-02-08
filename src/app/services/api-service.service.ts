@@ -63,5 +63,13 @@ confirmar(arquivo: User){
   
 }
 
+login(arquivo: User){
+  console.log("logando")
+  console.log(arquivo.password, arquivo.email)
+  return this.httpCliente.post<any>(`/api/authenticationlogin`,arquivo);
+  
+}
+
+
 
 }

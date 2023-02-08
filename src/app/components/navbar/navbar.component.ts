@@ -16,13 +16,16 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
-  
-
   signOut(){
-    this.cognito.signOut()
-    .then(()=>{
-      this.router.navigate(['/login']);
-    })
+    localStorage.removeItem("token")
+    this.router.navigate(['/login']);
   }
+
+  // signOut(){
+  //   this.cognito.signOut()
+  //   .then(()=>{
+  //     this.router.navigate(['/login']);
+  //   })
+  // }
 
 }

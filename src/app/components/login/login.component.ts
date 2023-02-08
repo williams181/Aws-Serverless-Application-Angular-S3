@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { CognitoService } from 'src/app/services/cognito.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { ApiServiceService } from 'src/app/services/api-service.service';
+import {Amplify, Auth} from 'aws-amplify';
 
 
 
@@ -20,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   forgotPass:boolean = false;
   newPass = ''
-  constructor(private router: Router, private cognito: CognitoService,private snackBar: MatSnackBar) { }
+  constructor(private router: Router, private cognito: CognitoService,
+              private snackBar: MatSnackBar, private api: ApiServiceService) { }
 
   ngOnInit(): void {
   this.user = {} as User;
@@ -28,21 +31,45 @@ export class LoginComponent implements OnInit {
   
   }
 
+  // public loginCognito(){
+  //   if(this.user && this.user.email && this.user.password){
+  //     this.cognito.signIn(this.user)
+  //     .then(()=>
+  //     this.router.navigate(['/list'])
+  //     )
+  //     .catch((error: any) =>{
+  //       this.openSnackBar(error.message, "fechar")
+  //     })
+  //   }
+  //   else{
+  //     console.log("usuario não existe")
+  //     this.openSnackBar("Email ou senha incorreto","dance");
+  //   }
+  // }
+
   public loginCognito(){
+    
     if(this.user && this.user.email && this.user.password){
-      this.cognito.signIn(this.user)
-      .then(()=>
-      this.router.navigate(['/list'])
-      )
-      .catch((error: any) =>{
-        this.openSnackBar(error.message, "fechar")
-      })
+      this.api.login(this.user)
+      .subscribe((res: any)=>{
+        if(res.accessToken != undefined){
+          console.log(res.accessToken)
+          localStorage.setItem("token",res.accessToken)
+           console.log("token: "+localStorage.getItem("token"))
+          this.router.navigate(['/list'])
+        }else{
+          this.openSnackBar("Email ou senha incorreto","fenhar");
+        }
+    })
+      
     }
     else{
       console.log("usuario não existe")
-      this.openSnackBar("Email ou senha incorreto","dance");
+      this.openSnackBar("Email ou senha incorreto","fenhar");
     }
   }
+
+
 
   forgotPassClicked(){
     this.forgotPass = true

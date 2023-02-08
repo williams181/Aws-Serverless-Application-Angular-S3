@@ -37,14 +37,13 @@ export class ListComponent implements OnInit{
               private route: ActivatedRoute, private cognito: CognitoService,private snackBar: MatSnackBar){}
 
   private getUser(){
-    this.cognito.getUser()
-    .then((user: User)=>{
+    const user = localStorage.getItem("token")
       if(user){
         console.log(user)
       }else{
         this.router.navigate(['/login']);
       }
-    })
+  
   }
 
  BuscarPorId(id: String){
