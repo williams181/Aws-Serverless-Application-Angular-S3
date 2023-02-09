@@ -31,8 +31,14 @@
                       </div>
                     </div>
 
-                    <button (click)="loginCognito()" id="cad" class="btn  btn-outline-light btn-lg">Entrar</button>
-      
+                    <button *ngIf="show; else loading" (click)="loginCognito()" id="cad" class="btn  btn-outline-light btn-lg">Entrar</button>
+                   
+                    <ng-template #loading>
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden"></span>
+                        </div>
+                    </ng-template>
+
                     <button (click)="forgotPassClicked()" id="forget" class="btn  btn-outline-light">Esqueci a senha</button>
                     
                     <p>Não tem conta ?</p> <a  href="/signup">Fazer Cadastro</a>
@@ -55,23 +61,36 @@
                     
             </div>
         </div>
-        <button (click)="forgotPassword()" id="butForget" class="btn  btn-outline-light btn-lg">Enviar</button>
-
+        <button *ngIf="isForgot; else forgot" (click)="forgotPassword()" id="butForget" class="btn  btn-outline-light btn-lg">Enviar</button>
+       
+        <ng-template #forgot>
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+        </ng-template>
        
 </div>
 
-<div class="conteiner " *ngIf="isConfirm" >
-        <div class="cod" >
+<div class="conteiner" *ngIf="isConfirm" >
+        <div class="col esqueciSenha" >
                     
             <h4> Um codigo de verificação foi enviado para o Email {{user.email}}</h4>
 
         <div class="form">
             <input type="text" class="form-control" name="codigo" placeholder="Digite o codigo" [(ngModel)]="user.code">
             <div class="form-text"></div>
-            <input type="text" class="form-control" name="novaSenha" placeholder="Digite Nova Senha" [(ngModel)]="newPass">
+            <input type="text" class="form-control" name="novaSenha" placeholder="Digite Nova Senha" [(ngModel)]="user.password">
             <div class="form-text"></div>
-            <button  (click)="newPassword()" id="butForget" class="btn btn-outline-light" >Confirmar</button>
+           
         </div>
+
+        <button *ngIf="isForgotConfirm; else confirm"  (click)="newPassword()" id="butForget" class="btn btn-outline-light" >Confirmar</button>
+       
+        <ng-template #confirm>
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+        </ng-template>
 
         </div>
 

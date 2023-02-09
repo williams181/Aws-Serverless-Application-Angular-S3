@@ -32,7 +32,7 @@ export class FormComponent implements OnInit{
     this.route.params.subscribe(
       ((params : any) =>{
           const id = params['id']
-          console.log(id)
+          
           
           if(id != undefined){
             this.att =false
@@ -61,9 +61,7 @@ export class FormComponent implements OnInit{
 
   private getUser(){
     const user = localStorage.getItem("token")
-      if(user){
-        console.log(user)
-      }else{
+      if(user == null){
         this.router.navigate(['/login']);
       }
   

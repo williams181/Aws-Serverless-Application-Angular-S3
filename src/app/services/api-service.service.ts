@@ -52,24 +52,32 @@ export class ApiServiceService {
 //*************autenticação cognito**** */
 
 Criar(arquivo: User){
-  console.log(arquivo.name, arquivo.email, arquivo.password)
+  
   return this.httpCliente.post<User>(`/api/authenticationcreate`,arquivo).toPromise();
   
 }
 
 confirmar(arquivo: User){
-  console.log(arquivo.name, arquivo.email, arquivo.code)
+
   return this.httpCliente.post<User>(`/api/authenticationconfirm`,arquivo).toPromise();
   
 }
 
 login(arquivo: User){
   console.log("logando")
-  console.log(arquivo.password, arquivo.email)
   return this.httpCliente.post<any>(`/api/authenticationlogin`,arquivo);
   
 }
 
+forgotPassword(arquivo: User){
+  return this.httpCliente.post<User>(`/api/authenticationforgot`,arquivo);
+  
+}
+
+forgotConfirmPassword(arquivo: User){
+  return this.httpCliente.post<User>(`/api/authenticationconfirmpassword`,arquivo).toPromise();
+  
+}
 
 
 }

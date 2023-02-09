@@ -38,11 +38,11 @@ export class ListComponent implements OnInit{
 
   private getUser(){
     const user = localStorage.getItem("token")
-      if(user){
-        console.log(user)
-      }else{
+      if(user ==  null){
         this.router.navigate(['/login']);
       }
+        
+      
   
   }
 

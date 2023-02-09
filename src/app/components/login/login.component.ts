@@ -4,7 +4,6 @@ import { User } from 'src/app/models/user';
 import { CognitoService } from 'src/app/services/cognito.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ApiServiceService } from 'src/app/services/api-service.service';
-import {Amplify, Auth} from 'aws-amplify';
 
 
 
@@ -17,7 +16,9 @@ export class LoginComponent implements OnInit {
 
   user!: User;
   isConfirm: boolean = false;
-
+  show = true 
+  isForgot = true 
+  isForgotConfirm = true
   
 
   forgotPass:boolean = false;
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
   
   }
 
+  //******** opção cognito direto do angular ********* */
   // public loginCognito(){
   //   if(this.user && this.user.email && this.user.password){
   //     this.cognito.signIn(this.user)
@@ -50,14 +52,15 @@ export class LoginComponent implements OnInit {
   public loginCognito(){
     
     if(this.user && this.user.email && this.user.password){
+      this.show=false
       this.api.login(this.user)
       .subscribe((res: any)=>{
         if(res.accessToken != undefined){
-          console.log(res.accessToken)
           localStorage.setItem("token",res.accessToken)
-           console.log("token: "+localStorage.getItem("token"))
-          this.router.navigate(['/list'])
+          // console.log("token: "+localStorage.getItem("token"))
+          this.router.navigate(['/form'])
         }else{
+          this.show=true
           this.openSnackBar("Email ou senha incorreto","fenhar");
         }
     })
@@ -78,36 +81,45 @@ export class LoginComponent implements OnInit {
 
   forgotPassword(){
     console.log("esqueci senha"+ this.user.email)
-
+    this.isForgot = false
     if(this.user.email){
-      this.cognito.forgotPass(this.user)
-      .then(() => {
-      console.log("verificado")
+      //this.cognito.forgotPass(this.user) // opção cognito direto do angular
+      this.api.forgotPassword(this.user)
+      .subscribe((res) => {
+        this.openSnackBar("verificado", "fechar")
+        console.log(res)
+       
         this.isConfirm = true
         this.forgotPass = false
     })
-      .catch((error: any) =>{
-        this.openSnackBar(error.message, "fechar")
-      })
+      // .catch((error: any) =>{
+      //   this.isForgot = true
+      //   this.openSnackBar(error.message, "fechar")
+      // })
     }
     else{
+      this.isForgot = true
       this.openSnackBar("Usuario não existe!", "fechar");
     }
     
   }
 
   newPassword(){
-    console.log(this.newPass.trim())
+    console.log(this.user.password)
     console.log(this.user.code)
-    if(this.user.code && this.newPass.trim().length != 0){
-      this.cognito.forgotPassSubmit(this.user, this.newPass.trim())
+    this.isForgotConfirm = false
+    if(this.user.code && this.user.password.length != 0){
+     // this.cognito.forgotPassSubmit(this.user, this.newPass.trim()) // opção cognito direto do angular
+      this.api.forgotConfirmPassword(this.user)
       .then(()=>{
         this.openSnackBar("Senha atualizada", "fechar")
         this.isConfirm = false
       }).catch((error:any) =>{
+        this.isForgotConfirm = true
         this.openSnackBar(error.message, "fechar")
       })
     }else{
+      this.isForgotConfirm = true
       this.openSnackBar("coloque codigo valido", "fechar")
     }
   }
