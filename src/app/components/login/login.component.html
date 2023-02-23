@@ -7,7 +7,7 @@
         <div class="auth-box">
             <div *ngIf="!isConfirm">
               <div class="header">
-                <h2>Bem vindo</h2>
+                <h2 >Bem vindo</h2>
 
                 <h4>Acesse sua conta</h4>
                 
@@ -41,7 +41,11 @@
 
                     <button (click)="forgotPassClicked()" id="forget" class="btn  btn-outline-light">Esqueci a senha</button>
                     
-                    <p>Não tem conta ?</p> <a  href="/signup">Fazer Cadastro</a>
+                    <div class="espaco">
+
+                        <p>Não tem conta ?</p> <a  href="/signup">Fazer Cadastro</a>
+
+                    </div>
 
             
               </div>
@@ -54,6 +58,12 @@
 
 <div class="conteiner" *ngIf="forgotPass" >
         <div class="col esqueciSenha">
+            <div class="header">
+                <h2 >Esqueceu sua Senha?</h2>
+
+                <h4>Digite o seu E-mail</h4>
+                
+              </div>
             <div class="mb-3">
 
                 <label class="form-label">Email</label>
@@ -61,7 +71,11 @@
                     
             </div>
         </div>
-        <button *ngIf="isForgot; else forgot" (click)="forgotPassword()" id="butForget" class="btn  btn-outline-light btn-lg">Enviar</button>
+        <div class="butonAlinhar">
+
+            <button *ngIf="isForgot; else forgot" (click)="forgotPassword()" id="butForget" class="btn  btn-outline-light btn-lg">Enviar</button>
+
+        </div>
        
         <ng-template #forgot>
             <div class="spinner-border" role="status">

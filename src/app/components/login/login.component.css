@@ -13,11 +13,17 @@
 p{
     margin-top: 5%;
 }
+#espaco{
+    top: 5%;
+}
+#butonAlinhar{
+    right: 10%;
+}
 #butCod{
     margin-left: 5%;
 }
 .header{
-    margin-left:35%;
+    text-align: center;
 }
 .form{
     width:60%;
