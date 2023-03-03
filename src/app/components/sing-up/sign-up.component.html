@@ -4,15 +4,18 @@
         <div class="auth-box">
             <div *ngIf="!isConfirm">
               <div class="header">
-                <h2>Registrar</h2>
-                
+                <br>
+                <h2><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Bem vindo</strong></h2>
+
+                <h4><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Crie sua Conta</strong></h4>
+
               </div>
               <div class="form">
                
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label">Nome</label>
-                                <input type="text" class="form-control"  [(ngModel)]="user.name" >
+                                <label class="form-label" style="font-size: larger;">Nome</label>
+                                <input type="text" maxlength="50" class="form-control"  [(ngModel)]="user.name" required="">
                                 <div class="form-text"></div>
                         </div>
                       </div>
@@ -20,8 +23,8 @@
                       
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="text" class="form-control"  [(ngModel)]="user.email" >
+                                <label class="form-label" style="font-size: larger;">Email</label>
+                                <input type="email" placeholder="exemplo@gmail.com" maxlength="50" class="form-control"  [(ngModel)]="user.email" required="">
                                 <div class="form-text"></div>
                         </div>
                       </div>
@@ -29,17 +32,23 @@
                     
                       <div class="col">
                           <div class="mb-3">
-                              <label class="form-label">Senha</label>
-                              <input type="password" class="form-control"   [(ngModel)]="user.password" >
-                              <div class="form-text">senha deve conter numeros, letras maiuscular e minuscular, caracter especial</div>
+                              <label class="form-label" style="font-size: larger;">Senha</label>
+                              <input type="password" placeholder="KFS123!@#" maxlength="22" class="form-control"   [(ngModel)]="user.password" required="">
                       </div>
                     </div>
 
-                    <button (click)="signUpCognito()" id="cad" class="btn  btn-outline-light btn-lg">Cadastrar</button>
+                    <br>
 
-                    <p>Já tem conta ?</p> <a  href="/login">Entrar</a>
+                    <div>
 
-                  
+                        <button (click)="signUpCognito()" class="btn  btn-outline-light btn-lg">Cadastrar</button>
+                   
+                        <a style="margin-left: 10px;" class="btn  btn-outline-light btn-lg" href="/login">Entrar</a>
+    
+                    </div>
+
+                    <br>
+                    <br>
       
               </div>
             </div>

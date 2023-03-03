@@ -2,8 +2,9 @@
     color:aliceblue;
     margin-top: 10%;
     width: 70%;
-    border: 5px solid black;
-    border-radius: 20px;
+    border: 2px solid white;
+    box-shadow: 5px 5px 5px 5px gray;
+    border-radius: 10px;
     background-color:  #293949;
 
 }
