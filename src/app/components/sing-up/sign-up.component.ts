@@ -14,9 +14,6 @@ export class SignupComponent implements OnInit {
   user!: User;
   isConfirm: boolean = false;
  
- 
-
-
   constructor(private router: Router, private cognito: CognitoService,
               private snackBar: MatSnackBar,private api: ApiServiceService) { }
 
@@ -24,22 +21,6 @@ export class SignupComponent implements OnInit {
     this.user = {} as User;
     this.isConfirm = false;
   }
-
-  // signUpCognito(){
-  //   console.log("cadastrar")
-  //   if(this.user && this.user.email && this.user.password){
-  //     this.cognito.signUp(this.user)
-  //     .then(() => 
-  //       this.isConfirm = true
-  //     )
-  //     .catch((error: any) =>{
-  //       this.openSnackBar(error.message, "fechar")
-  //     })
-  //   }
-  //   else{
-  //     this.openSnackBar("Use Email e senha validos!","fechar");
-  //   }
-  // }
 
   public signUpCognito(){
     console.log("cadastrar")
@@ -72,29 +53,10 @@ export class SignupComponent implements OnInit {
   }
   }
 
-  // public confirmLogin(){
-  //   console.log("confirmar")
-  //   if(this.user){
-  //   this.cognito.confirmLogin(this.user)
-  //   .then(() =>{
-  //     this.router.navigate(['/login'])
-  //   }).catch((error: any)=>{
-  //     this.openSnackBar(error.message, "fechar")
-  //   })
-  // }
-  // else{
-  //   this.openSnackBar("houve um error", "fechar")
-  // }
-  // }
-
- 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
   }
-
-
-
 
 }

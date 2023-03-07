@@ -22,7 +22,6 @@ export class FormComponent implements OnInit{
   form!: FormGroup;
   submited =  false
 
-
   constructor(private api: ApiServiceService,  private router: Router,
                private fb: FormBuilder, private route: ActivatedRoute, private cognito: CognitoService,private snackBar: MatSnackBar){ }
  
@@ -71,12 +70,6 @@ export class FormComponent implements OnInit{
     localStorage.removeItem("token")
     this.router.navigate(['/login']);
   }
-  // signOut(){
-  //   this.cognito.signOut()
-  //   .then(()=>{
-  //     this.router.navigate(['/login']);
-  //   })
-  // }
 
   Editar(arquivo: any){
     console.log("editar", arquivo)
@@ -94,7 +87,6 @@ export class FormComponent implements OnInit{
     })
   }
 
-
   hasError(field: string){
     return this.form.get(field)?.errors
     
@@ -110,7 +102,6 @@ export class FormComponent implements OnInit{
     }
   }
  
-
   Salvar(){
 
     if(this.form.valid){
@@ -130,7 +121,6 @@ export class FormComponent implements OnInit{
     }
   }
 
-
   Atualizar(){
     
     if(this.form.valid){
@@ -147,8 +137,6 @@ export class FormComponent implements OnInit{
       console.log("invalido")
     }
   }
-
-
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {

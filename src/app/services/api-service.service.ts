@@ -16,11 +16,9 @@ export class ApiServiceService {
    ngModel =  new EventEmitter<interfaceApiService>();
    static arquivo =  new EventEmitter<interfaceApiService>();
  
-  
-
   constructor(private httpCliente: HttpClient, private router: Router) { }
 
-
+// CRUD API
 
   Buscar(): Observable<any>{
 
@@ -28,11 +26,9 @@ export class ApiServiceService {
 
   }
 
-
   BuscarPorId(id: any ){
 
   return this.httpCliente.get<any>(`/api/arquivo/${id}`);
-   
    
   }
 
@@ -49,7 +45,7 @@ export class ApiServiceService {
     return this.httpCliente.delete(`/api/delete/${id}`).toPromise()
   }
 
-//*************autenticação cognito**** */
+// Autenticação com o Cognito
 
 Criar(arquivo: User){
   
@@ -78,6 +74,5 @@ forgotConfirmPassword(arquivo: User){
   return this.httpCliente.post<User>(`/api/authenticationconfirmpassword`,arquivo).toPromise();
   
 }
-
 
 }

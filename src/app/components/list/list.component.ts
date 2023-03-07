@@ -6,7 +6,6 @@ import { CognitoService } from 'src/app/services/cognito.service';
 import { User } from 'src/app/models/user';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
-
 @Component({
   selector: 'snack-bar-overview-app-list',
   templateUrl: './list.component.html',
@@ -18,12 +17,6 @@ export class ListComponent implements OnInit{
   hiddenDelete: boolean = true;
   hiddenEdit: boolean = true;
   public Registro$!: Observable<any>;
-
-
-  
-
-
-
 
  ngOnInit(){
   this.getUser()
@@ -41,8 +34,6 @@ export class ListComponent implements OnInit{
       if(user ==  null){
         this.router.navigate(['/login']);
       }
-        
-      
   
   }
 
@@ -70,7 +61,5 @@ export class ListComponent implements OnInit{
     duration: 2000,
   });
 }
-
-
 
 }

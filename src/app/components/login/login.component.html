@@ -1,8 +1,5 @@
-
-
 <div class="conteiner" *ngIf="!forgotPass">
 
- 
 <div class="row">
         <div class="auth-box">
             <div *ngIf="!isConfirm">
@@ -11,27 +8,24 @@
                 <br>
 
                 <h2><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Bem Vindo</strong></h2>
-
                 <h4><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Acesse sua Conta</strong></h4>
                 
               </div>
 
               <div class="form">
          
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label" style="font-size: larger;">Email</label>
-                                <input type="email" placeholder="exemplo@gmail.com" maxlength="50" class="form-control"  [(ngModel)]="user.email" required>
-                                
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" style="font-size: larger;">Email</label>
+                            <input type="email" placeholder="exemplo@gmail.com" maxlength="50" class="form-control"  [(ngModel)]="user.email" required>
                         </div>
-                      </div>
+                    </div>
                     
-                      <div class="col">
-                          <div class="mb-3">
-                              <label class="form-label" style="font-size: larger;">Senha</label>
-                              <input type="password" placeholder="JFH1234!@#" maxlength="22" class="form-control" [(ngModel)]="user.password" required>
-                            
-                      </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" style="font-size: larger;">Senha</label>
+                            <input type="password" placeholder="JFH1234!@#" maxlength="22" class="form-control" [(ngModel)]="user.password" required>
+                        </div>
                     </div>
 
                     <br>
@@ -73,7 +67,7 @@
 
                 <h4><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Esqueceu sua senha?</strong></h4>
                 
-              </div>
+            </div>
             <div class="mb-3">
 
                 <label class="form-label" style="font-size: larger;">Email</label>
@@ -135,6 +129,5 @@
         <br>
 
         </div>
-
 
 </div>

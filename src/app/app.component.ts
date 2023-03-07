@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ApiServiceService } from './services/api-service.service';
 import { interfaceApiService } from './models/InterfaceApiService';
 import {Observable, of} from 'rxjs';
@@ -16,13 +15,10 @@ export class AppComponent implements OnInit{
  
   title = 'aws-serverless-application-angular';
   
-
   ngOnInit(){
    
   }
 
   constructor(private api: ApiServiceService,  private router: Router, private cognito: CognitoService){}
-
-  
 
 }

@@ -54,13 +54,14 @@
             </div>
 
             <div class="cod" *ngIf="isConfirm">
-              
-                <h4> Um codigo de verificação foi enviado para o Email {{user.email}}</h4>
 
-              <div class="form">
-                <input type="text" name="codigo" placeholder="Digite o codigo" [(ngModel)]="user.code">
-                <button  (click)="confirmLogin()" id="butCod" class="btn btn-outline-light" >Confirmar</button>
-              </div>
+                <h4><strong style="font-family: Georgia, 'Times New Roman', Times, serif; margin-left: 5%;">Um codigo de verificação foi enviado para o e-mail:</strong></h4>
+                <h4><strong style="font-family: Georgia, 'Times New Roman', Times, serif; margin-left: 5%;">{{user.email}}</strong></h4>
+                <br>
+ 
+                <input style="width: 35%; margin-left: 21%; margin-bottom: -38px;" type="text" name="codigo" maxlength="8" class="form-control" placeholder="123456" [(ngModel)]="user.code">
+
+                <button (click)="confirmLogin()" class="btn btn-outline-light" style="font-size: larger; margin-left: 440px; margin-bottom: 25px;">Confirmar</button>
             
             </div>
 

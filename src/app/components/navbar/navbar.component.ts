@@ -9,8 +9,6 @@ import { CognitoService } from 'src/app/services/cognito.service';
 })
 export class NavbarComponent implements OnInit {
 
-
-
   constructor(private cognito: CognitoService, private router: Router) { }
   
   ngOnInit(): void {
@@ -20,12 +18,5 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("token")
     this.router.navigate(['/login']);
   }
-
-  // signOut(){
-  //   this.cognito.signOut()
-  //   .then(()=>{
-  //     this.router.navigate(['/login']);
-  //   })
-  // }
 
 }

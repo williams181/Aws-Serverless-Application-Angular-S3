@@ -1,13 +1,8 @@
-
 #cad{
-    
 }
-
 .cod{
-
-  
+    margin-top: 5%;
 }
-
 .conteiner{
     color:aliceblue;
     margin-top: 10%;
@@ -32,6 +27,13 @@ p{
 .form{
     width:60%;
     margin-left: 20%;
+}
+.form2 {
+    width: 40%;
+    margin-right: 40px;    
+}
+.form3{
+    flex-direction: row;
 }
 a{
     color: aliceblue;

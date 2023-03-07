@@ -5,28 +5,22 @@
     bottom:0;
     background:  #293949;
     left: 0;
-    
 }
 #sectionBody{
     margin-left: 25%;
     width: 70%;
 }
 #navList{
-margin-top: 10%;
-margin-left: 5%;
-   
+    margin-top: 10%;
+    margin-left: 5%;
 }
-
-
 #navList li a{
     color:white;
     margin-bottom: 5%;
 }
 a:hover{
     background-color: #017af3;
-    
 }
 #sair{
     margin-top: 10%;
-    
 }
