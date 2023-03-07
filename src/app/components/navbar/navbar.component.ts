@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CognitoService } from 'src/app/services/cognito.service';
+//import { CognitoService } from 'src/app/services/cognito.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,16 +11,18 @@ export class NavbarComponent implements OnInit {
 
 
 
-  constructor(private cognito: CognitoService, private router: Router) { }
+  constructor(//private cognito: CognitoService,
+           private router: Router) { }
   
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
   }
   signOut(){
     localStorage.removeItem("token")
     this.router.navigate(['/login']);
   }
 
+    // opção cognito
   // signOut(){
   //   this.cognito.signOut()
   //   .then(()=>{

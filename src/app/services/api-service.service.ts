@@ -12,10 +12,11 @@ interface Response { results: interfaceApiService[] }
   providedIn: 'root'
 })
 
+
 export class ApiServiceService {
    ngModel =  new EventEmitter<interfaceApiService>();
    static arquivo =  new EventEmitter<interfaceApiService>();
- 
+   //private const URL =  "https://ojviia7zik.execute-api.us-east-1.amazonaws.com/Prod/"
   
 
   constructor(private httpCliente: HttpClient, private router: Router) { }
@@ -62,6 +63,7 @@ confirmar(arquivo: User){
   return this.httpCliente.post<User>(`/api/authenticationconfirm`,arquivo).toPromise();
   
 }
+
 
 login(arquivo: User){
   console.log("logando")

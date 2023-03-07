@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { CognitoService } from 'src/app/services/cognito.service';
+//import { CognitoService } from 'src/app/services/cognito.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
  
 
 
-  constructor(private router: Router, private cognito: CognitoService,
+  constructor(private router: Router, //private cognito: CognitoService,
               private snackBar: MatSnackBar,private api: ApiServiceService) { }
 
   ngOnInit(): void {

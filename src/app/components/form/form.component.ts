@@ -4,8 +4,8 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ActivatedRoute, Router,ParamMap } from '@angular/router';
 import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 
-import { CognitoService } from 'src/app/services/cognito.service';
-import { User } from 'src/app/models/user';
+//import { CognitoService } from 'src/app/services/cognito.service';
+
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -24,16 +24,16 @@ export class FormComponent implements OnInit{
 
 
   constructor(private api: ApiServiceService,  private router: Router,
-               private fb: FormBuilder, private route: ActivatedRoute, private cognito: CognitoService,private snackBar: MatSnackBar){ }
+               private fb: FormBuilder, private route: ActivatedRoute,
+                //private cognito: CognitoService,
+                private snackBar: MatSnackBar){ }
  
   ngOnInit(): void{
 
-    this.getUser()
+    this.getUser();
     this.route.params.subscribe(
       ((params : any) =>{
           const id = params['id']
-          
-          
           if(id != undefined){
             this.att =false
             this.api.BuscarPorId(id).subscribe(res =>{
@@ -61,6 +61,7 @@ export class FormComponent implements OnInit{
 
   private getUser(){
     const user = localStorage.getItem("token")
+    console.log(user)
       if(user == null){
         this.router.navigate(['/login']);
       }

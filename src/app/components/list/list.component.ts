@@ -2,7 +2,7 @@ import { Component, OnInit, BootstrapOptions } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CognitoService } from 'src/app/services/cognito.service';
+//import { CognitoService } from 'src/app/services/cognito.service';
 import { User } from 'src/app/models/user';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -34,7 +34,9 @@ export class ListComponent implements OnInit{
  }
 
  constructor(private api: ApiServiceService, private router: Router,
-              private route: ActivatedRoute, private cognito: CognitoService,private snackBar: MatSnackBar){}
+              private route: ActivatedRoute, 
+              //private cognito: CognitoService,
+              private snackBar: MatSnackBar){}
 
   private getUser(){
     const user = localStorage.getItem("token")

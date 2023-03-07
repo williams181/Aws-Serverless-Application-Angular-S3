@@ -1,7 +1,7 @@
 import { Component,  OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { CognitoService } from 'src/app/services/cognito.service';
+//import { CognitoService } from 'src/app/services/cognito.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
   
 
   forgotPass:boolean = false;
-  newPass = ''
-  constructor(private router: Router, private cognito: CognitoService,
+ 
+  constructor(private router: Router,// private cognito: CognitoService,
               private snackBar: MatSnackBar, private api: ApiServiceService) { }
 
   ngOnInit(): void {
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
       .subscribe((res: any)=>{
         if(res.accessToken != undefined){
           localStorage.setItem("token",res.accessToken)
-          // console.log("token: "+localStorage.getItem("token"))
+          console.log(res)
           this.router.navigate(['/form'])
         }else{
           this.show=true
