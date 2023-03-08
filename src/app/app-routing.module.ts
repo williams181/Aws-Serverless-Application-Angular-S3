@@ -5,7 +5,7 @@ import { ListComponent } from './components/list/list.component';
 import { SignupComponent } from './components/sing-up/sign-up.component';
 import { LoginComponent } from './components/login/login.component';
 
-
+// Rotas para navegação entre telas
 
 const routes: Routes = [
   { path: '', component: FormComponent },

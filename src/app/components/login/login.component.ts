@@ -5,8 +5,6 @@ import { User } from 'src/app/models/user';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,7 +17,6 @@ export class LoginComponent implements OnInit {
   show = true 
   isForgot = true 
   isForgotConfirm = true
-  
 
   forgotPass:boolean = false;
  
@@ -29,25 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   this.user = {} as User;
 
-  
   }
-
-  //******** opção cognito direto do angular ********* */
-  // public loginCognito(){
-  //   if(this.user && this.user.email && this.user.password){
-  //     this.cognito.signIn(this.user)
-  //     .then(()=>
-  //     this.router.navigate(['/list'])
-  //     )
-  //     .catch((error: any) =>{
-  //       this.openSnackBar(error.message, "fechar")
-  //     })
-  //   }
-  //   else{
-  //     console.log("usuario não existe")
-  //     this.openSnackBar("Email ou senha incorreto","dance");
-  //   }
-  // }
 
   public loginCognito(){
     
@@ -56,7 +35,7 @@ export class LoginComponent implements OnInit {
       this.api.login(this.user)
       .subscribe((res: any)=>{
         if(res.accessToken != undefined){
-          localStorage.setItem("token",res.accessToken)
+          localStorage.setItem("token",res.idToken)
           console.log(res)
           this.router.navigate(['/form'])
         }else{
@@ -72,8 +51,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
-
   forgotPassClicked(){
     this.forgotPass = true
     
@@ -83,7 +60,6 @@ export class LoginComponent implements OnInit {
     console.log("esqueci senha"+ this.user.email)
     this.isForgot = false
     if(this.user.email){
-      //this.cognito.forgotPass(this.user) // opção cognito direto do angular
       this.api.forgotPassword(this.user)
       .subscribe((res) => {
         this.openSnackBar("verificado", "fechar")
@@ -92,10 +68,7 @@ export class LoginComponent implements OnInit {
         this.isConfirm = true
         this.forgotPass = false
     })
-      // .catch((error: any) =>{
-      //   this.isForgot = true
-      //   this.openSnackBar(error.message, "fechar")
-      // })
+
     }
     else{
       this.isForgot = true
@@ -109,7 +82,6 @@ export class LoginComponent implements OnInit {
     console.log(this.user.code)
     this.isForgotConfirm = false
     if(this.user.code && this.user.password.length != 0){
-     // this.cognito.forgotPassSubmit(this.user, this.newPass.trim()) // opção cognito direto do angular
       this.api.forgotConfirmPassword(this.user)
       .then(()=>{
         this.openSnackBar("Senha atualizada", "fechar")
@@ -123,8 +95,6 @@ export class LoginComponent implements OnInit {
       this.openSnackBar("coloque codigo valido", "fechar")
     }
   }
-
-
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {

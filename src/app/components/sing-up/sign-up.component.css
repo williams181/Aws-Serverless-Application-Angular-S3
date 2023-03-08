@@ -1,21 +1,16 @@
-
 #cad{
-    float:right;
-    margin-top: -7%;
 }
-
 .cod{
     margin-top: 5%;
-  
 }
-
 .conteiner{
     color:aliceblue;
     margin-top: 10%;
     width: 70%;
-    border: 5px solid black;
-    border-radius: 20px;
-    background-color: #293949;
+    border: 2px solid white;
+    box-shadow: 5px 5px 5px 5px gray;
+    border-radius: 10px;
+    background-color:  #293949;
 }
 #forget{
     margin-left: 10%;
@@ -27,11 +22,18 @@ p{
     margin-left: 5%;
 }
 .header{
-    margin-left:35%;
+    margin-left:40%;
 }
 .form{
     width:60%;
     margin-left: 20%;
+}
+.form2 {
+    width: 40%;
+    margin-right: 40px;    
+}
+.form3{
+    flex-direction: row;
 }
 a{
     color: aliceblue;

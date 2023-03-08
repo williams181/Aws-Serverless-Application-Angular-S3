@@ -1,48 +1,53 @@
-
-
 <div class="conteiner" *ngIf="!forgotPass">
 
- 
 <div class="row">
         <div class="auth-box">
             <div *ngIf="!isConfirm">
               <div class="header">
-                <h2>Bem vindo</h2>
 
-                <h4>Acesse sua conta</h4>
+                <br>
+
+                <h2><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Bem Vindo</strong></h2>
+                <h4><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Acesse sua Conta</strong></h4>
                 
               </div>
+
               <div class="form">
          
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="text" class="form-control"  [(ngModel)]="user.email" >
-                                
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" style="font-size: larger;">Email</label>
+                            <input type="email" placeholder="exemplo@gmail.com" maxlength="50" class="form-control"  [(ngModel)]="user.email" required>
                         </div>
-                      </div>
-
+                    </div>
                     
-                      <div class="col">
-                          <div class="mb-3">
-                              <label class="form-label">Senha</label>
-                              <input type="password" class="form-control"   [(ngModel)]="user.password" >
-                            
-                      </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" style="font-size: larger;">Senha</label>
+                            <input type="password" placeholder="JFH1234!@#" maxlength="22" class="form-control" [(ngModel)]="user.password" required>
+                        </div>
                     </div>
 
-                    <button *ngIf="show; else loading" (click)="loginCognito()" id="cad" class="btn  btn-outline-light btn-lg">Entrar</button>
+                    <br>
+
+                    <div>
+
+                        <button *ngIf="show; else loading" (click)="loginCognito()" id="cad" class="btn  btn-outline-light btn-lg">Entrar</button>
                    
+                        <a style="margin-left: 10px;" class="btn  btn-outline-light btn-lg" href="/signup">Cadastro</a>
+
+                        <a style="margin-right: 10px;" (click)="forgotPassClicked()" id="forget"><ins>Esqueci a senha</ins></a>
+    
+                    </div>
+
                     <ng-template #loading>
                         <div class="spinner-border" role="status">
                             <span class="visually-hidden"></span>
                         </div>
                     </ng-template>
-
-                    <button (click)="forgotPassClicked()" id="forget" class="btn  btn-outline-light">Esqueci a senha</button>
                     
-                    <p>Não tem conta ?</p> <a  href="/signup">Fazer Cadastro</a>
-
+                    <br>
+                    <br>
             
               </div>
             </div>
@@ -54,14 +59,33 @@
 
 <div class="conteiner" *ngIf="forgotPass" >
         <div class="col esqueciSenha">
+            <div class="header">
+
+                <br>
+
+                <h2><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Bem Vindo</strong></h2>
+
+                <h4><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Esqueceu sua senha?</strong></h4>
+                
+            </div>
             <div class="mb-3">
 
-                <label class="form-label">Email</label>
-                <input type="text" class="form-control"  [(ngModel)]="user.email" >
+                <label class="form-label" style="font-size: larger;">Email</label>
+                <input type="email" maxlength="50" placeholder="exemplo@gmail.com" class="form-control" [(ngModel)]="user.email" required>
                     
             </div>
         </div>
-        <button *ngIf="isForgot; else forgot" (click)="forgotPassword()" id="butForget" class="btn  btn-outline-light btn-lg">Enviar</button>
+
+        <br>
+
+        <div style="margin-left: 145px;">
+
+            <button *ngIf="isForgot; else forgot" (click)="forgotPassword()" class="btn  btn-outline-light btn-lg">Enviar</button>
+
+        </div>
+
+        <br>
+        <br>
        
         <ng-template #forgot>
             <div class="spinner-border" role="status">
@@ -71,28 +95,39 @@
        
 </div>
 
+<!--           codigo de valiação de registro        -->
+
 <div class="conteiner" *ngIf="isConfirm" >
         <div class="col esqueciSenha" >
+
+            <br>
                     
-            <h4> Um codigo de verificação foi enviado para o Email {{user.email}}</h4>
+            <h4><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Bem Vindo</strong></h4>
+            <h4><strong style="font-family: Georgia, 'Times New Roman', Times, serif;">Um codigo de verificação foi enviado para o Email</strong></h4>
+            <h4>{{user.email}}</h4>
+
+            <br>
 
         <div class="form">
-            <input type="text" class="form-control" name="codigo" placeholder="Digite o codigo" [(ngModel)]="user.code">
+            <label class="form-label" style="font-size: larger;">Codigo</label>
+            <input type="text" class="form-control" name="codigo" maxlength="8" placeholder="123456" [(ngModel)]="user.code" required="">
             <div class="form-text"></div>
             <input type="text" class="form-control" name="novaSenha" placeholder="Digite Nova Senha" [(ngModel)]="user.password">
             <div class="form-text"></div>
            
         </div>
 
-        <button *ngIf="isForgotConfirm; else confirm"  (click)="newPassword()" id="butForget" class="btn btn-outline-light" >Confirmar</button>
+        <button *ngIf="isForgotConfirm; else confirm"  (click)="newPassword()" class="btn btn-outline-light" >Confirmar</button>
        
         <ng-template #confirm>
             <div class="spinner-border" role="status">
                 <span class="visually-hidden"></span>
             </div>
         </ng-template>
+        
+        <br>
+        <br>
 
         </div>
-
 
 </div>

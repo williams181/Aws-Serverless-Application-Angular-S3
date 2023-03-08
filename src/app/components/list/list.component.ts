@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
-
 @Component({
   selector: 'snack-bar-overview-app-list',
   templateUrl: './list.component.html',
@@ -19,16 +18,10 @@ export class ListComponent implements OnInit{
   hiddenEdit: boolean = true;
   public Registro$!: Observable<any>;
 
-
-  
-
-
-
-
  ngOnInit(){
   this.getUser()
-   this.Registro$ =  this.api.Buscar();
-   this.Registro$.subscribe(res=> {console.log(res.Registros)
+   this.Registro$ =  this.api.Buscar(localStorage.getItem("token"));
+   this.Registro$.subscribe(res=> {
     this.show = true;
   }); 
  }
@@ -39,13 +32,13 @@ export class ListComponent implements OnInit{
               private snackBar: MatSnackBar){}
 
   private getUser(){
-    const user = localStorage.getItem("token")
-      if(user ==  null){
+    const user = this.api.AuthenticateToken(localStorage.getItem("token"));
+    user.then(res=> {
+      console.log(res)
+      if(res ==  "undefined" ){
         this.router.navigate(['/login']);
       }
-        
-      
-  
+    })
   }
 
  BuscarPorId(id: String){
@@ -62,7 +55,7 @@ export class ListComponent implements OnInit{
      console.log("removido com sucesso !"+res)
      this.hiddenDelete = true;
      this.openSnackBar("apagado com secesso","fechar")
-     this.Registro$ =  this.api.Buscar();
+     this.Registro$ =  this.api.Buscar(localStorage.getItem("token"));
     }).catch(error => console.error(error))
    
  }
@@ -72,7 +65,5 @@ export class ListComponent implements OnInit{
     duration: 2000,
   });
 }
-
-
 
 }
