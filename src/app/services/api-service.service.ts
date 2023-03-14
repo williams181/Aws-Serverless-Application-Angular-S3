@@ -2,7 +2,6 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { interfaceApiService } from '../models/InterfaceApiService';
 import { Observable, take } from 'rxjs';
-import { FormComponent} from 'src/app/components/form/form.component';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 
@@ -26,16 +25,12 @@ export class ApiServiceService {
     let headers = new HttpHeaders()
     .append('token', url);
     return this.httpCliente.get("/api/authenticatetoken/",{ headers: headers }).toPromise().catch((err: HttpErrorResponse) => {
-      // simple logging, but you can do a lot more, see below
-      console.log("error")
-      console.error('An error occurred:', err.error);
-      return "undefined"
+      return "Unauthorized"
     });
 
   }
 
   Buscar(url: any): Observable<any>{
-    console.log(url)
     let headers = new HttpHeaders()
     .append('token', url);
     return this.httpCliente.get<any>("/api/arquivo/",{ headers: headers });

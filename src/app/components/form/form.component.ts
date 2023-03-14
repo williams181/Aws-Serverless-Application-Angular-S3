@@ -59,13 +59,18 @@ export class FormComponent implements OnInit{
   }
 
   private getUser(){
-    const user = this.api.AuthenticateToken(localStorage.getItem("token"));
-    user.then(res=> {
-      console.log(res)
-      if(res ==  "undefined"){
-        this.router.navigate(['/login']);
-      }
-    })
+    const token = localStorage.getItem("token")
+    const user = this.api.AuthenticateToken(token);
+    if(token == null){
+      this.router.navigate(['/login']);
+    }else{
+      user.then(res=> {
+        console.log(res)
+        if(res ==  "Unauthorized"){
+          this.router.navigate(['/login']);
+        }
+      })
+    }
   }
 
   signOut(){
